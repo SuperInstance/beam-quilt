@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** Library proposal #2: a second, incompatible `beamquilt` package layout — its ideas now live in quilt-engine. Nugget unique to this file: the decomposition pair is named here — TreeSplitter and its missing other half, the ReassemblyEngine. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 # Architectural Specification: The Semantic Game Engine & Patchwork Coordination Library (`QuiltEngine`)
 
 ## 1. Core Ontology & Engine State Machine

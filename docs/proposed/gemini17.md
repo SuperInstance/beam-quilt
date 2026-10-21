@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The tooling file: zero-config seam bootstrap, the Quilt CLI and seam daemon — homed in quilt-engine — plus Eisenstein snap pointers to snapkit-v2, deadband-funnel pointers to plato-engine-block-c, and constraint-aware compilation pointers to forgemaster. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To turn [`beam-quilt`](https://github.com/SuperInstance/beam-quilt) into a stream-lined, frictionless tool—rather than just an architectural design study—we have to take the underlying mechanics of **state, transmission, and algorithm** and compress them into an execution pipeline that feels as natural as pulling a fishing line or playing an instrument.
 
 When you look at [`beam-quilt`](https://github.com/SuperInstance/beam-quilt) alongside its sibling repositories like [`cocapn`](https://github.com/SuperInstance/cocapn) (repo-first agents), `forgemaster` (constraint-aware compilers), and [`constraint-theory-core`](https://github.com/SuperInstance/constraint-theory-core) (Eisenstein lattices and deadband funnels), streamlining it means removing every ounce of operational friction.

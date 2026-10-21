@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The zero-dependency specification: minimal ontology restated, plus environmental staging and the boundary driver (the orchestrator as a limit, never a commander) — homed in continuum-runtime and beam-quilt's operator material. Its trajectory-only state claim conflicts with the SPEC and is parked. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 # The Sovereign Substrate: A Clean, Zero-Dependency Architectural Specification
 
 To define the architecture on its own—stripping away all project names, specific tooling, and external references into a pure, self-contained system—we must formalize the substrate as an **autonomous, constraint-governed topological field**.

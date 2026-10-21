@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The marine blueprint and the version-zero build order: TransmissionEnvelope + JevPair first, then a patch manifest, then two processes with no shared memory. The build order now lives in quilt-engine's build brief; the marine worked example lives in beam-quilt. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To bring this out of the philosophical ether and onto the deck of a boat, let’s design the actual, practical application of the `beam-quilt` architecture: **A Decentralized Fleet Intelligence Mesh for Coastal Waters.**
 
 This isn't a cloud-hosted SaaS app; it’s a localized, edge-native system running on hardware you can drop into a weatherproof box, hook into an NMEA 2000 bus, and mount on a vessel.

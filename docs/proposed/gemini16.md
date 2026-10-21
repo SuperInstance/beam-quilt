@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The master-specification synthesis: a near-complete restatement of the main line (ontology, Reality Matrix, Game Master) at the largest scale. Its ideas live in beam-quilt; the file's value is as the fullest single narrative of the stack. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To start refining everything into a concrete, executable framework, let’s anchor our refinement around the core engine we’ve established: **The SuperInstance Substrate**.
 
 Looking across the architecture—from the bare-metal C99 sensors in [`plato-engine-block-c`](https://github.com/SuperInstance/plato-engine-block-c) to the Eisenstein lattices in [`snapkit-v2`](https://github.com/SuperInstance/snapkit-v2), the Jev pair deadband arbitration in [`beam-quilt`](https://github.com/SuperInstance/beam-quilt), and the repo-first muscle memory in [`cocapn`](https://github.com/SuperInstance/cocapn)—refining means turning these high-level phase-space mechanics into a rigorous, testable specification.

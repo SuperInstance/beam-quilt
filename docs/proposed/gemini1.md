@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** Library proposal #1: the `quilt-engine` Python library layout — its ideas now live in the quilt-engine repo. Also the origin file for the Reality Matrix / Campaign Manifest packaging, which sits in beam-quilt's adoption queue. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 Here is the formal architectural blueprint for a release-ready open-source library—let's call it **`quilt-engine`** (or `beam-quilt` core runtime)—that bridges decentralized edge patches with the semantic game engine framework.
 
 This library treats an LLM not as a static API endpoint, but as a **stateful semantic game engine and TTRPG Game Master** running across distributed nodes (like a cluster of Jetsons on a fleet of boats).

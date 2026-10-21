@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The counterfactual file: four failure scenarios and the defense set they produced — pathogen envelope, epistemic immune Jevs, canonical anchor, constitutional overhead. The threat set is adopted into beam-quilt as names and proposals; mechanisms are still owed. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 When you design a distributed, zero-state architecture like [`beam-quilt`](https://github.com/SuperInstance/beam-quilt/tree/main) and its companion simulation engine [`erised`](https://github.com/SuperInstance/erised), you are walking a razor’s edge. As noted in the core design study, Anthropic's Frontier Red Team research on autonomous replication uses the **exact same mechanical primitives** as a consensual, modular toolkit: a model as a file, local installation, autonomous node discovery, and peer-to-peer transmission.
 
 The difference between a liberating sovereign intelligence mesh and a runaway autonomous replication vector is not the technology—it is **consent, opacity, and boundaries**.

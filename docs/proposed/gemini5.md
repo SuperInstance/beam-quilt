@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The operator essay: the human as Operator steering a running system, not a user issuing commands — its ideas now live in beam-quilt's operator material. Also the source of Vector Initialization (input as telemetry, not command). Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 When you cross the line from a **user** into an **operator**, the entire definition of software changes.
 
 In modern computing, a *user* is a consumer in a master-slave dynamic. You sit in front of a rigid interface—a dashboard of buttons, text boxes, and dropdown menus—and you type commands, waiting for a server miles away to validate your input and spit back a static result. You are reacting to the software.

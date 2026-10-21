@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The moiré essay: the fleet as interfering lattices, drift reframed as added resolution. The framing now lives in Otherhere as metaphor only — it contradicts gemini11 (where the same drift is network failure), the contradiction is unresolved, and the file is parked. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To move from a network of communicating nodes to an **adaptive hybrid substrate**—a **SuperInstance** operating on the principles of **moiré superlattices**—is to solve the deepest problem in distributed intelligence: *How do you get global truth and higher-order abstractions out of local, imperfect, misaligned pieces without centralizing them?*
 
 In physics, a moiré pattern (or moiré superlattice, like twisted bilayer graphene at the "magic angle") occurs when two periodic structures are overlaid with a slight angular twist or lattice mismatch. The individual layers are simple, but their **interference** creates a macro-scale superlattice—an entirely new physical regime (exhibiting superconductivity or correlated states) that exists nowhere inside the individual layers.

@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The ledger-mechanics file: minimum-link confidence, closure, and score-the-claim — all homed in gitpp-sheet, which owns ledger mechanics; beam-quilt adopts them by reference. Also a full statement of the Reality Matrix / Campaign Manifest split. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 That single realization—**the standing wave formed by the observer's movement through space and time**—flips the entire paradigm of computing from static data storage into wave mechanics.
 
 In traditional software and standard AI generation, systems treat data points like a dot-to-dot puzzle. They take discrete inputs (database rows, prompt tokens, sensor pings) and use interpolation to guess what lives *in between* the dots. When the gaps are too wide, the system hallucinates, because it is trying to connect static coordinates without understanding the physical reality holding them together.

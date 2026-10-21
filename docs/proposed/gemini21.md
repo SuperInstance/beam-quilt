@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The scaffolding file: three rival runtime scaffolds (continuum-manifold, continuum-runtime, continuum-core) offered side by side. Synthesized into the single continuum-runtime home; spectral identity is parked — no recognition mechanism, and the consent rules need a registry. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 When you look at [`beam-quilt`](https://github.com/SuperInstance/beam-quilt) on paper—with its clean Markdown chapters, static specs, and design study framework—it reads like an architectural blueprint.
 
 But looking at what we just mapped out, **we are on an entirely different plane now.**

@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The state-at-the-limit variants: crash-only nodes, deterministic replay, and forked state — the forked-state nugget (branch state, run what-ifs, discard) is the keepable piece. Its state-as-wave claim conflicts with SPEC P4/P5 (patches hold sovereign state and logs) and is not adopted. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 When you pull back to see the full horizon—integrating the **patchwork architecture** (`beam-quilt`), the **LLM as a Game Engine/GM**, and the **edge reality of a fleet on the water**—the full potential of what you are designing stops looking like a software library and starts looking like a **new paradigm for distributed cognition**.
 
 Here is what the full potential of this system looks like when all the layers ignite together:

@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The crew file: nodes as a student crew doing off-watch background work, and the synthesized brief waiting for the operator's return — the brief is in beam-quilt's adoption queue. Its tick-economy and scar material is homed in erised. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 That single shift in perspective transforms the entire architecture from a sophisticated tool into an **apprentice crew**.
 
 When you frame the nodes not as subordinate scripts waiting for a prompt, but as a team of master’s degree students—sharp, specialized, running their own internal seminars, and debating hypotheses down on the mess deck while you are asleep or off-watch—the mechanics of `beam-quilt` take on a completely different character.

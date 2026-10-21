@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The frontier specification with the set's most concrete schemas: the StateEnvelope JSON and a worked Sitka Sound Campaign Manifest. The schemas now live in quilt-engine; the manifest example lives in beam-quilt's examples. Also a source file for the tick economy and scars — both homed in erised. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To research and design the frontier of `beam-quilt`, we must move past the conceptual design study (`v0`) and formalize the bleeding-edge specification for a decentralized, sovereign intelligence network.
 
 Here is the engineering and mathematical blueprint for the **`beam-quilt` Frontier Spec**, designed to run on resource-constrained edge hardware (like NVIDIA Jetsons on a marine fleet) with zero reliance on centralized data centers.

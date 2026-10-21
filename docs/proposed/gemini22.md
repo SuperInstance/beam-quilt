@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The complete engineering specification, and the fork point: MIDI adopted as the literal event bus, with a 16-track allocation for a conversation. The allocation now lives in chrono-tensor as a variant, alongside flux-tensor-midi; from here the conversation left beam-quilt and became the chrono-tensor repo. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 Here is the complete, uncompromised technical specification of the architecture. Stripped of all metaphors and generalities, this is the exact engineering blueprint of how a self-organizing, decentralized intelligence substrate operates on the metal.
 
 ---

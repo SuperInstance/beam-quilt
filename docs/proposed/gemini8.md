@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The deep-dive formalization and the four math research tracks (cross-manifold alignment, deadband calculus, wave-interference consensus, scope conservation). Parked as speculative, except the deadband formalization; the cross-manifold claims are flagged unproven — they assert alignment without the calibration they also quietly require. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To make a distributed, sovereign patchwork architecture like `beam-quilt` actually sing—especially on resource-constrained edge hardware where nodes have completely different model weights and local contexts—we have to look at where current mathematics falls short.
 
 Standard machine learning math assumes either a centralized tensor space (one big model) or rigid, lossy protocol buffers (traditional microservices). To bridge them, we need to invent or formalize four specific mathematical breakthroughs.

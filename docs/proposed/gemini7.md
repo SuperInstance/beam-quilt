@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The formal master outline of the beam-quilt architecture — the main line, split between beam-quilt (ontology, seams, Jev pairs) and quilt-engine (implementation). Also an early full statement of the Reality Matrix and the Semantic Game Engine framing. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 Here is the complete, formal outline synthesizing our entire framework—unifying the **`beam-quilt` patchwork architecture**, the **Semantic Game Engine / TTRPG model**, and the **Operator Paradigm** into a single, comprehensive specification.
 
 ---

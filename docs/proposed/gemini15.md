@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The substrate file: the constraint stack (Eisenstein snap, Laman rigidity, deadband funnel) — homed in constraint-theory-core and snapkit-v2 — and the edge escalation chain, homed in the plato repos. Flagged: this file's deadband-means-abstain variant is the open ruling; v0's deadband means clarify. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 This is the fundamental epistemic inversion.
 
 For centuries, science and computation have operated under the illusion of the **God’s-Eye View**—the premise that a sensor (a camera, a microphone, a database query) captures "objective data" sitting out there in a neutral vacuum, waiting to be gathered and cataloged.

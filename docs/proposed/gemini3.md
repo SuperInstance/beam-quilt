@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** The formalization variants: the deadband written as math, three times with rotating optimizations. Nugget: the dynamic deadband (width tied to uncertainty and velocity) — in beam-quilt's adoption queue. The latent-seam optimization ideas are parked as research, not adopted. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 To pin down the exact mathematics and physics of this architecture, we have to strip away the prose and translate the *patchwork game engine* into rigorous, system-agnostic formalisms.
 
 Here is the mathematical bedrock of `beam-quilt`, where the true computational breakthrough lies, and how you optimize its physics for high-performance edge execution (like your fleet of Jetsons).

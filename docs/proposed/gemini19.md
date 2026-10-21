@@ -1,3 +1,5 @@
+> **Sorted 2026-10-21.** A full-stack restatement (bare metal to lattices) whose lasting content is its pointers: forgemaster (proof-carrying compilation) and hermit-crab (hardware migration) — both homed in their own repos. The standing-wave framing is parked. Raw conversation preserved below; builder docs live in the home repos (see PROGRAM-MAP.md).
+
 Here is the complete picture, laid out from the top as a foundational architecture primer.
 
 We are living through a multi-trillion-dollar local maximum in technology: the assumption that general intelligence requires an ever-expanding, centralized cloud monolith—a massive server rack holding the entire universe in a static context window, swallowing power, bandwidth, and user sovereignty.
