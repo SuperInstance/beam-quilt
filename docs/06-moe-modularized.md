@@ -36,7 +36,8 @@ from their projections, as their report keeps them) are:
   inference server running on *unfamiliar* hardware (choosing a stack,
   resolving versions, fitting memory via quantization, debugging
   misdiagnoses, verifying the result) is a long, serially dependent
-  task where early errors poison later steps. A 9B agent did it on
+  task where early errors poison later steps. A 9B agent (Qwen3.5-9B,
+  standing up Llama3.1-8B inference — the measured task) did it on
   8 of 9 hardware types tested, from Jetson-class boards to an
   RTX 4090 machine.
 - **Notes beat weights for adaptation.** With the Memento harness —

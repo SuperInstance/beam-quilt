@@ -1,0 +1,257 @@
+# Foundations — what the research established before the architecture is completed
+
+This document is the evidence layer under the architecture. Before the
+design in `README.md` / `SPEC.md` / `docs/01–09` is completed or extended,
+its load-bearing claims were checked against primary sources and its
+mechanisms were surveyed against what already exists. The two research
+dossiers are preserved in full in `docs/foundations/`:
+
+- [`docs/foundations/LANE-A-PRIOR-ART.md`](docs/foundations/LANE-A-PRIOR-ART.md)
+  — prior-art survey: 30+ systems across five domains, each tagged
+  PULL / ADAPT / STUDY / REJECT against beam-quilt's own constraints.
+- [`docs/foundations/LANE-B-FACTCHECK.md`](docs/foundations/LANE-B-FACTCHECK.md)
+  — claims fact-check: every load-bearing factual claim in the programme's
+  documents, checked claim by claim, with verdicts and sources.
+
+## Method
+
+Two research lanes ran on the Jetson on 2026-10-21 (ZCode), one per
+dossier. Both lanes worked from primary sources — the repos, papers, and
+official docs themselves — and marked anything they could not verify
+UNVERIFIED rather than repeating it.
+
+**Referee rule: no verdict was relayed unverified.** Before merge, Muse
+independently spot-checked five decisive items and confirmed all five:
+the Dec-POMDP NEXP-hardness result, the 2D scope of Laman's theorem, the
+account repo count (5,306 public / 4,485 non-fork), the Anthropic ARA
+figures against the original post, and the MIDI bandwidth arithmetic.
+What follows is the condensed, architecture-facing version of the two
+dossiers; where this document and a dossier disagree, the dossier's
+citations win.
+
+## The pull list
+
+What the survey found genuinely worth taking, condensed from Lane A's
+closing pull list. Pull means *fit*, never popularity: each item below
+matched the design's constraints (sovereign patches, no shared state,
+influence only as refusable proposals, edge hardware, owner consent) in a
+way the alternatives did not.
+
+### PULL
+
+- **BEAM process and supervision semantics** (Erlang/OTP, Apache-2.0) —
+  for `continuum-runtime`. Per-process heaps with copied messages,
+  selective-receive mailboxes (a patch's inbox is the natural
+  seam-arbitration chokepoint), supervision trees with restart-intensity
+  escalation, monitors/links, two-generation hot code swap. Explicitly
+  **not** pulled: distributed Erlang's full-mesh, cookie-trust,
+  kill-the-loser name-resolution layer — it assumes the uniform-trust
+  cluster edge hardware is not.
+
+### ADAPT (take the mechanism, rebuild the surface)
+
+- **LTTng session/channel/ring-buffer semantics** — for `chrono-tensor`.
+  Session = the fleet stream; track = channel, independently
+  enabled/disabled (= mute/solo); per-channel discard-vs-overwrite policy
+  makes the ring-buffer GC choice explicit; rotation/chunk archives and
+  snapshot mode = downmix extraction; per-user/per-process buffer
+  ownership is the shipped analogue of owner-consented recording.
+- **Kafka's log-compaction contract** — for `chrono-tensor`'s downmixing
+  rule, currently named but not specified. Encode as the contract:
+  addresses (tau) never change, order is preserved, latest value per key,
+  tombstones for deletion, current state rebuildable from the tail alone.
+  (Kafka the broker is rejected: a central-cluster JVM system.)
+- **OpenTelemetry span context / W3C context propagation** — for
+  `quilt-engine`'s transmission envelope, replacing a bespoke provenance
+  encoding. Trace/span IDs plus links are provenance-light; attributes and
+  events carry intent and cost; propagation formats buy interop with
+  existing edge tooling. OTel defines no storage, no replay, no tracks —
+  the envelope only, not the backend.
+- **Chronicle Queue's named tailers and memory-mapped append-only
+  cycles** — for patch-local logs (SPEC P5) and `chrono-flight`'s
+  playback cursors. Named, persistent, read-without-consume tailers are
+  exactly "each sovereign reader keeps its own scrub position";
+  cycle-rolling is the retention seam where downmix/archive hooks in.
+  Rebuild in Rust rather than vendoring the Java original.
+- **Conformal quantiles + SGR binomial-bound calibration** — for the Jev
+  pair's band edges in `quilt-engine`, replacing hand-set go/no-go
+  thresholds with formula-shaped edges set from a small calibration set
+  (SPEC rule G2, with an auditable statistical story). Two inversions are
+  required: band the *receiver's* scores, not a model's self-assessment;
+  and let an ambiguous middle trigger a narrower question, not a bigger
+  output set. Sender/receiver divergence is non-exchangeability to be
+  logged, not noise to be absorbed.
+- **Mozannar & Sontag's comparative-defer loss + Switch Transformer's
+  divergence logging** — for the Jev pair's comparative pick and the seam
+  handshake's divergence record. The cross-entropy-over-classes-∪-{defer}
+  shape is the credible starting formula for a receiver score that must
+  beat the competing pool *and* the option to defer; Switch's
+  dispatched-fraction-vs-mean-probability term is the template for logging
+  divergence-from-uniform (rule G3).
+- **Temporal's position-matched command/event replay discipline** — for
+  `chrono-flight` / `continuum-runtime`, replacing any naive notion of
+  replay. Log transmissions so re-derivation is positionally checkable;
+  treat every model call as an activity — recorded, never re-executed;
+  detect drift as a positional mismatch instead of pretending
+  determinism. This enforces the replay limit rather than contradicting
+  it. (Temporal the platform is not pulled: it requires a database
+  service and datacenter deployment.)
+- **DecomP's typed decomposition with a base-case stop rule** — for
+  `quilt-engine`'s TreeSplitter. Keep the named-handler type system and
+  the decompose-until-small-enough recursion; invert DecomP's bet — our
+  typed angles are static (a fixed schema), not LLM-generated programs,
+  so the decomposer need not be the smartest model in the fleet.
+
+Smaller patterns worth taking (mechanisms, not systems): Letta's
+memory-as-git-repo for owner-readable, versioned patch state; Petals'
+blacklist → reroute → regenerate-caches sequence and Hivemind/SWARM's
+"rebalance the topology around the departed node" as the two proven churn
+answers; WinDbg TTD's ring-recording mode, keyframe index, and Timelines
+lanes as `chrono-flight` UI precedent; rr's cost-up-front documentation
+style as the honesty bar for our own claims.
+
+### Build our own — where nothing off the shelf fits
+
+- **The seam itself.** Receiver-side comparative admission with a
+  deadband whose honest outcome is a *narrower question* is unclaimed
+  across every agent framework surveyed (AutoGen, LangGraph, CrewAI,
+  Letta, OpenAI Agents SDK) **and** across the gating literature
+  (selective prediction, conformal prediction, cascades, learning to
+  defer, MoE routing). Every existing gate is sender- or
+  orchestrator-decided; every abstention is terminal or a silent
+  fall-through. The closest misses triangulate the design — defer's
+  comparative third outcome, CALM's refinement-instead-of-abstention,
+  LangGraph's narrower-question loop — and beam-quilt's contribution is
+  re-siding all of it to the receiver. **This is the genuinely unbuilt
+  piece, and it is ours to build.**
+- **The fleet flight recorder.** Every mechanic exists somewhere (Lane A
+  §4) but has never been assembled owner-consented and fleet-wide. The
+  assembly — consent boundaries, per-patch logs into one multi-track
+  fleet stream, playback without re-execution promises — is ours.
+- **Latent seams between different models: keep parked.** Stitching works
+  only with a trained low-capacity translator fit on paired activations
+  from the task distribution run through both networks (5K–25K+ samples in
+  the kindest, same-architecture, vision-only results; no LLM
+  demonstration anywhere; identity transfer fails catastrophically). The
+  un-park condition is concrete: name the calibration corpus, the
+  stitch-point granularity, and the acceptance test first. Typed textual
+  payloads remain the evidence-backed seam.
+- **Churn-tolerant pooling of home hardware for inference.** No surveyed
+  system fits sovereignty — all shard one shared model, none let a
+  receiver refuse, none log influence. Learn prima.cpp's
+  heterogeneity-aware placement and Petals' recovery sequence; build the
+  sovereign version.
+
+## The verdict table
+
+Condensed from Lane B. Full reasoning, quotations, and sources:
+`docs/foundations/LANE-B-FACTCHECK.md`.
+
+| Claim | Verdict | The finding in one line |
+|---|---|---|
+| Anthropic ARA figures (Gemma 0.39 tok/s on 15 TV boxes; 9B setup on 8/9 hardware types; GLM-5.2 8/8 nodes in 4/5 trials; Memento 45% → 61–84%; +13.7 ECI/yr) | **VERIFIED** | All five confirmed against the primary post, with measurement vs. projection correctly separated in our text |
+| Account scale ("roughly five thousand repos") | **VERIFIED, narrowed** | 5,306 public repositories in total, of which 821 are forks — the non-fork count is 4,485; state it that way |
+| TUTOR in use at the FAA until 2006 | **VERIFIED** | The FAA retired its PLATO system in September 2006, the last CDC Cyber PLATO install |
+| TUTOR shared-memory "common blocks" | **VERIFIED** | Up to 1,500 shared 60-bit words per lesson, attached explicitly — the closest historical analogue to a seam |
+| Gooch instruments (GSW, 16-voice GCS) | **VERIFIED** | GSW is 4-voice; the later GCS is the 16-voice one — our sentence attaches the number to the right instrument |
+| Empire "30 players, 1973" | **MISLEADING-SCOPE** | The 1973 original was 8-player turn-based; the 30-player real-time cap is Empire IV's, by 1977, at ≤15 players per team, over 1200 baud with 1–2 s screen updates |
+| Avatar "60 concurrent users" | **MISLEADING-SCOPE** | 60 is system-wide concurrency; a dungeon group was ~15; the "closed gold economy" detail is unsourced |
+| OPAL integrated into TUTOR; TUTOR compiled and "distributed" | **MISLEADING-SCOPE** | OPAL (name and expansion verified) was a separate PLATO-compatible language with its own compiler and editors; TUTOR was interpreted, and the 60-bit words never left the host — the wire carried a character stream |
+| "Parsed in 1–2 clock cycles via barrel shifts" | **REFUTED** | TUTOR was interpreted; the CDC 6600's fastest functional unit is 3 cycles; "barrel" names the I/O round-robin, not a data-path shifter |
+| OPAL → MIDI lineage ("MIDI inherited this blueprint") | **REFUTED** | MIDI's documented lineage is Oberheim/Roland DCB → the 1981 Universal Synthesizer Interface → the 1983 spec; no PLATO/CERL/OPAL connection exists in any source. The correct verb is *converged on*, not *inherited* |
+| MIDI "sub-millisecond temporal alignment" | **REFUTED** | The arithmetic: 31.25 kBaud with 10-bit framing = **3,125 bytes/s**; a 3-byte message takes **~0.96 ms** of wire time; the best synchronisation available is 8.33 ms (MTC quarter-frame at 30 fps). 16 tracks are real; per-track ceiling is ~65 events/s |
+| MIDI "near-zero overhead" | **MISLEADING-SCOPE** | True only of the 1-byte status header (33% of a 3-byte message); bought by giving up checksum, sequence numbers, and resynchronisation — one dropped byte silently corrupts the stream |
+| "Truth is mathematically defined as a rigid graph" (Laman) | **REFUTED** | Laman's theorem is a 2D bar-joint result (no 3D analogue is known), and rigidity is geometric determinacy, not a truth predicate — a rigid graph can be rigidly wrong |
+| Dec-POMDP "convergence to a globally optimal tactical map" | **REFUTED** | The finite-horizon policy-existence problem is NEXP-complete (Bernstein et al. 2002); no general convergence or optimality guarantee exists. Comparative picking — a local, per-pool operation — is the tractable design, and it is already ours |
+| A₂ / Eisenstein lattice optimality | **MISLEADING-SCOPE** | A₂ is the densest lattice in **2 dimensions** only; the theorem says nothing about high-dimensional intent vectors. The hexagonal *time* grid remains a sound design choice — on neighbour structure, not optimality |
+| Kuramoto entrainment as the sync mechanism | **MISLEADING-SCOPE** | The model needs one continuously advancing phase scalar per node, observable phase differences (which presuppose a shared clock), weak coupling, near-identical frequencies. The ideation prose also misstates the threshold condition (ωᵢ is a natural frequency, not a variance). As used here it is a cadence heuristic; no oscillators are coupled |
+| Orthogonal Procrustes for cross-model latent alignment | **MISLEADING-SCOPE** | Classical Procrustes requires **paired correspondences**; it cannot align independently trained models from nothing. This is exactly why the default seam is typed, not latent |
+| Hodge decomposition of seam friction | **MISLEADING-SCOPE** | Hodge needs an oriented, weighted simplicial complex with 2-simplices and an edge flow; two proposals are none of those. The three-bucket triage it inspired (noise / loops / structural bottlenecks) is a good taxonomy — presented as a taxonomy, not a decomposition |
+| Tiny judge: 6.8M params, ~7 ms on ARM | **PLAUSIBLE, with caveats** | The arithmetic fits published edge-inference numbers for one forward pass — but the artifact is not public, so the figure is not yet auditable, and a 6.8M transformer cannot read a long prompt in 7 ms (a 512-token prefill is ~seconds). Scope the claim to short typed profiles, and publish the model plus a benchmark to make it checkable |
+
+## What this changes in the docs
+
+Each refuted or narrowed claim was mapped to the documents that repeat
+it. The four sibling repos were grepped for `sub-millisecond`, `rigid`,
+`globally optimal`, `5,000`, `OPAL`, `lineage` (report only — those repos
+are corrected by their own maintainers, not from here); beam-quilt itself
+was grepped the same way and fixed in place.
+
+### Fixed in beam-quilt (this merge)
+
+- `docs/04-jev-pairs.md` — the "~7 ms on ARM" figure is now scoped to
+  short typed profiles, with a pointer here.
+- `README.md` — the same scoping applied to the jev-semantic line.
+- `PROGRAM-MAP.md` — "roughly five thousand repos" replaced with the
+  verified count: 5,306 public repositories, 4,485 non-fork.
+- `docs/06-moe-modularized.md` — precision addition per Lane B: the 9B
+  setup agent is named (Qwen3.5-9B) and the measured task named
+  (standing up Llama3.1-8B inference), which is what makes the 8-of-9
+  figure comparable across models.
+- Checked and deliberately left alone: `docs/08-lineage.md` and the
+  README's chapter listing (a Fortran/BEAM/model-as-file lineage — no
+  OPAL or MIDI claim); `docs/05-scope-distillation.md`'s "lineage of
+  identical small models" (generic usage); `PROGRAM-MAP.md`'s pointer
+  naming "Laman rigidity checks" as another repo's cluster (a map entry,
+  not an endorsement of rigidity as truth).
+
+### chrono-tensor — builder docs already correct; ideation carries the overclaims
+
+The builder docs need **no correction**: `ARCHITECTURE.md:112` scopes
+Laman correctly ("a rigid graph can be rigidly wrong, so rigidity is
+never a test of truth") and `ROADMAP.md:19,24` frames rigidity checks as
+an under-specification heuristic. The refuted assertions live in
+`docs/ideation/`, which is provenance only and already header-annotated
+as such — they must not be quoted into builder docs:
+
+- `docs/ideation/gemini1.md` (15 term-matching lines) — the load-bearing
+  ones: `:263` "native sub-millisecond temporal alignment"; `:196`,
+  `:495`, `:534` "sub-millisecond" serialization/envelopes; `:330`,
+  `:468`, `:549` "Truth is mathematically defined as a rigid graph";
+  the Kuramoto threshold misstatement (Lane B §3.4).
+- `docs/ideation/gemini2.md` (55 term-matching lines) — the lineage
+  essay: `:111` OPAL "integrated directly into TUTOR… vectorized… 
+  ultra-compact"; `:144`, `:149`, `:188`, `:296` the OPAL→MIDI lineage
+  framing (refuted: convergence, not inheritance); `:93`, `:128`, `:240`
+  the same lineage asserted as the stack's ancestry.
+- `docs/ideation/gemini3.md` (39 term-matching lines) — `:59`, `:129`,
+  `:239`, `:326` "Truth is mathematically defined as a rigid graph";
+  `:208`, `:295` "sub-millisecond event bus"; `:11` OPAL streams folded
+  into the CTC lineage claim.
+
+### quilt-engine — no hits
+
+No occurrence of any checked term. Nothing to correct.
+
+### continuum-runtime — one hit, already correct
+
+- `ARCHITECTURE.md:167` — a parked-vocabulary table row that names
+  "Laman rigidity = truth" in order to reject it ("determination is not
+  truth"). Correct as written; no change needed.
+
+### chrono-flight — no hits
+
+No occurrence of any checked term. Nothing to correct.
+
+### Standing follow-ups (from Lane B, not yet done)
+
+- **jev-semantic**: publish the judge artifact (ONNX or its hash), a
+  one-command benchmark (input shape, quantization, board, median of N),
+  the judge's explicit input contract, and the quantization contract
+  behind the "bit-identical across architectures" claim — or soften that
+  wording to "reproducible to within tolerance."
+- **chrono-tensor ideation**: the propagation fix Lane B recommends is
+  alignment of prose, not redesign — the architecture doc already says
+  the correct thing about all six mathematical mechanisms.
+
+## Standing rule
+
+**Foundations before architecture completion.** No chapter, spec clause,
+or builder doc in this programme asserts a capability, a number, or a
+lineage that has not been checked against a primary source — and where a
+check narrows a claim, the narrowed version is what the docs carry.
+Quality over efficiency throughout: we pull prior art only when it fits
+the constraints, never because it is popular or near to hand, and we
+build our own where the fit is wrong — the seam itself being the standing
+example. New load-bearing claims enter through this file: checked first,
+then written down.
