@@ -326,6 +326,15 @@ itself. The full records are
   returns 404, so no dates or contents could be checked. The early
   projects below were, in Casey's own assessment, immature expressions
   of this paradigm — expressions of it, not its origin.
+  **Provenance caveat (Casey, 2026-10-21): the public record is a
+  survivor set, not a complete archive.** Before moving his work to
+  GitHub, Casey worked locally; a OneDrive sync incident deleted a
+  large amount of the original SuperInstance projects, and he does not
+  know what was saved and what was lost. Some repos — including
+  fragmentary or placeholder-looking ones — are re-uploads of whatever
+  fragments survived that loss, particularly from his 2025 work. Read
+  gaps, stubs and late creation dates accordingly: absence in this
+  record is not evidence of absence in the work.
 - **Layer 1 — early expressions, 2025.** The **ActiveLog product
   line**: `activelog-claude` (created 2025-08-19), `activelog`
   (2025-08-23) and `SuperInstanceEco` (created 2025-08-31, root content
