@@ -167,7 +167,7 @@ Condensed from Lane B. Full reasoning, quotations, and sources:
 | Kuramoto entrainment as the sync mechanism | **MISLEADING-SCOPE** | The model needs one continuously advancing phase scalar per node, observable phase differences (which presuppose a shared clock), weak coupling, near-identical frequencies. The ideation prose also misstates the threshold condition (ωᵢ is a natural frequency, not a variance). As used here it is a cadence heuristic; no oscillators are coupled |
 | Orthogonal Procrustes for cross-model latent alignment | **MISLEADING-SCOPE** | Classical Procrustes requires **paired correspondences**; it cannot align independently trained models from nothing. This is exactly why the default seam is typed, not latent |
 | Hodge decomposition of seam friction | **MISLEADING-SCOPE** | Hodge needs an oriented, weighted simplicial complex with 2-simplices and an edge flow; two proposals are none of those. The three-bucket triage it inspired (noise / loops / structural bottlenecks) is a good taxonomy — presented as a taxonomy, not a decomposition |
-| Tiny judge: 6.8M params, ~7 ms on ARM | **PLAUSIBLE, with caveats** | The arithmetic fits published edge-inference numbers for one forward pass — but the artifact is not public, so the figure is not yet auditable, and a 6.8M transformer cannot read a long prompt in 7 ms (a 512-token prefill is ~seconds). Scope the claim to short typed profiles, and publish the model plus a benchmark to make it checkable |
+| Tiny judge: 6.8M params, ~7 ms on ARM | **CORRECTED 2026-10-22** (F4 audit, spot-checked) | The params are exact (6,803,843, graph-inspected) and the artifact **is** public — since 2026-10-07 in `SuperInstance/agent-inbox` (`payloads/intuition-bench/`; ONNX sha256 `0fc8b8dc…`, weights `53da6a3e…`, byte-identical to `SuperInstance/intuition@eeb1154`) — the earlier "not public" statement was wrong. The ~7 ms **ARM** figure, however, is unsupported: the ARM benchmark task was blocked and never ran; 7.3 ms was x86 at 1 thread. A Jetson re-run of the published benchmark (2026-10-22) gives **12.3 ms p50 at 4 threads / 33.5 ms at 1 thread**. "Bit-identical" scopes to per-configuration determinism (exact at the judge's 4-decimal output convention across machines; ~1e-7 logit shifts across runtime optimisation levels). The input window is 64 tokens — the claim only ever concerned short typed profiles |
 
 ## What this changes in the docs
 
@@ -235,11 +235,15 @@ No occurrence of any checked term. Nothing to correct.
 
 ### Standing follow-ups (from Lane B, not yet done)
 
-- **jev-semantic**: publish the judge artifact (ONNX or its hash), a
-  one-command benchmark (input shape, quantization, board, median of N),
-  the judge's explicit input contract, and the quantization contract
-  behind the "bit-identical across architectures" claim — or soften that
-  wording to "reproducible to within tolerance."
+- **jev-semantic** (narrowed by the 2026-10-22 F4 audit — the artifact
+  is already public in `agent-inbox`, hashes in the table above): pin
+  the sha256 hashes into jev-semantic's judge manifest (~an hour);
+  record a real ARM benchmark and correct the manifest's latency line
+  to the measured figures; write the input-format document (today it
+  exists only as code, with a train/serve skew to state); replace the
+  "quantization contract" with a truthful statement — the graph is
+  fp32 with no quantization ops; the contract is
+  determinism-by-configuration. No research problems; about a day.
 - **chrono-tensor ideation**: the propagation fix Lane B recommends is
   alignment of prose, not redesign — the architecture doc already says
   the correct thing about all six mathematical mechanisms.
