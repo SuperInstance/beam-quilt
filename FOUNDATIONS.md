@@ -272,3 +272,121 @@ the constraints, never because it is popular or near to hand, and we
 build our own where the fit is wrong — the seam itself being the standing
 example. New load-bearing claims enter through this file: checked first,
 then written down.
+
+## Shelf foundations — the two active items
+
+Two further lanes ran on 2026-10-21 for the foundation Casey restated
+that day — Lane C, a survey of the existing SuperInstance shelf, and
+Lane D, a sweep of the local record for prior formulations. Both
+dossiers are preserved in full in `docs/foundations/`:
+[`LANE-C-SHELF.md`](docs/foundations/LANE-C-SHELF.md) and
+[`LANE-D-LOCAL.md`](docs/foundations/LANE-D-LOCAL.md).
+
+**The anatomy.** Representing a system takes two active items. The
+**active log** is an item's current readings of every cell *from its
+own perspective*: each entity holds first-class knowledge of itself,
+and that is truth *for it* — there is no God's-eye view, only
+perspectives that learn from each other through the compressed
+payloads they exchange (a quorum of blind men holding legs still does
+not have the sighted view of the elephant). The readings are **dated**
+— fog of war: they age, the fog returns, and each item operates on a
+predictive model of the other side. The **active ledger** is not a
+ledger of account values but of **deductions and contributions**:
+payloads out of one item and into another, recorded by the sender as a
+SEND and by the receiver as a RECEIVE — and the *agreement* between
+the two sovereign records is what mints the shared fiction that is
+operational. A **contract is an algorithm**: the agreed algorithm
+governing a crossing is itself an early ledger entry, an agreement
+about future sends and receives; and committing is the bridge that
+resolves uncertain log-state into ledger agreement. Consequence: there
+is no universal stored state to appeal to — state lives in each item's
+active log (perspectival, dated); shared state is never stored
+anywhere, it exists only as agreed ledger entries.
+
+**The lineage (Lane D).**
+
+- **2026-10-05 — cordis-lab, the two spreadsheets:** active log = data
+  sitting in cells (state at rest); active ledger = how data changed
+  moving to the next cell — transitions, algorithms, agreements,
+  custody, always double-entered ("deducted here, added there"), the
+  algorithm part of the entry.
+- **2026-10-08 — quilt-rooms, the working implementation:** each room
+  keeps a sovereign active log; between rooms, an active ledger of
+  agreed links; cross-room time is itself an agreement, not a clock.
+  The same day: a log is the uncertain working state inside one agent's
+  cell; committing resolves it into shared agreement.
+- **2026-10-10 — the cellular agent:** "an agent is really these two
+  logs" — the active log is what the agent *is* (state-at-a-time); the
+  active ledger is its contracts, the agreed algorithms for sending
+  and receiving. "In human terms, a contract is an algorithm."
+- **2026-10-21 — the generalization:** agents and rooms become
+  **items** (deliberately generic — not necessarily objects); the log
+  becomes perspectival, dated **readings**; the ledger's emphasis
+  returns to **movements** (deductions/contributions, SEND/RECEIVE
+  agreement). Nothing earlier was retracted — scope widened, the log
+  went temporal, the two halves of the ledger (contracts ex ante,
+  movements ex post) compose.
+
+**What to tap (Lane C).** The shelf already settles the components
+around the core; cite and reuse the mechanisms — **import nothing
+wholesale** (the anti-bloat rule). In brief:
+
+- **quilt-rooms** — the direct prior art: the named pair
+  (`ACTIVE-LOG.md` / `ACTIVE-LEDGER.md`), sovereign local sequence
+  time, both-sides-record, pending→agreed lifecycle, scoped universe
+  time. Cite it as the source of the log/ledger split. Its ledger
+  agrees on *time*, not on payload transfers — see the gaps.
+- **quilt-chrono** — paired flows for the log side: every cell read is
+  a "reading," every write a "writing," one `flow_id` linking source
+  read to sink write; compensating corrections (history never
+  rewritten); current state as a pure projection (`stateAt`).
+- **edge-ledger** — the travel shape for local truth: per-node
+  hash-chained envelopes, idempotent ingest (exact redelivery is an
+  acked no-op; same seq, different hash is a fork, rejected loudly) —
+  the settled answer to what a SEND looks like on the wire and what a
+  RECEIVE does on ingest.
+- **gitpp-sheet** — confidence and closure for readings: minimum-link
+  confidence (never mean, never product), score-the-claim-not-the-
+  record, latest-reading-wins, and the closure property — a ledger
+  sufficient when a verdict reproduces from it with no judge call.
+- **elephant** — perceiver-owned readings: every reading is someone's
+  reading, subjective and experience-shaped; a reading is a **delta**
+  (field after minus field before), and that before→after pair is the
+  directed edge a cell ledger records.
+- **naDir** — the async lifecycle for contributions: open → heartbeat
+  → close, with a reaper for stale entries; source→destination
+  provenance fields. (Its close is unilateral — provenance, not
+  bilateral agreement.)
+- **quilt-cells** — the record shape for what a log holds:
+  `INPUT → OUTPUT + WHY + COST` — a reading stays interpretable and
+  priced when it later crosses into a ledger.
+
+Full per-repo findings, including the ADAPT-grade items (cocapn's sxc1
+fail-closed seam dialect, constraint-theory-core's exact snap,
+gitpp-oracle's ledger governance, ledger-continuity's recovery
+semantics, erised's scar rule) are in
+[`docs/foundations/LANE-C-SHELF.md`](docs/foundations/LANE-C-SHELF.md).
+
+**The three gaps — the genuinely unbuilt pieces.** Lane C found no
+repo implementing:
+
+1. **A per-observer tensor of dated readings** — per item, per cell,
+   each reading dated, with explicit staleness and a predictive model
+   filling the fog. Parts exist (quilt-chrono's recorded readings,
+   gitpp-sheet's aged readings, elephant's subjective readings); the
+   structure as one thing does not.
+2. **Two sovereign ledgers whose agreement mints shared state for
+   payload transfers** — quilt-rooms agrees on time, edge-ledger's ack
+   comes from a store, naDir's close is unilateral. SEND booked by one
+   side, RECEIVE booked by the other, shared state existing *only* in
+   their agreement — the heart of the restatement — is unbuilt.
+3. **Contract identity bound into each ledger entry** — the algorithm
+   (id / hash / version) that governed a crossing recorded *in* the
+   entry itself. sxc1 seals a dialect and gitpp-sheet's guards
+   adjudicate, but no repo binds the governing contract into the
+   transfer record. "A contract is an algorithm" remains a definition
+   to build.
+
+These three are beam-quilt's own work, the same shape as the seam
+itself in the pull list above: the components are settled on the shelf;
+the composition is ours.

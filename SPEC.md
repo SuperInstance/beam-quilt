@@ -1,9 +1,13 @@
 # SPEC — the patch contract and the seam handshake
 
-v1.1, 2026-10-21. Normative where it says MUST; the chapters in `docs/`
+v1.2, 2026-10-21. Normative where it says MUST; the chapters in `docs/`
 are the reasoning, this file is the checklist an implementation can be
 tested against. The deadband definition in §3 was revised in v1.1 by
-Casey's ruling recorded below; the other clauses carry forward from v0.
+Casey's ruling recorded below. In v1.2, P4/P5 were restated to absorb
+Casey's two-active-items foundation (2026-10-21): a patch's sovereign
+state is its **active log** of perspectival, dated readings, and its
+transmissions are **active ledger** entries booked by both sides; the
+other clauses carry forward from v1.1.
 
 ## 1. Patch
 
@@ -17,11 +21,24 @@ A **patch** is a unit that satisfies all of:
   non-conforming.
 - **P3 — Standalone worth.** It MUST be useful, or at minimum honestly
   evaluable, with no quilt around it.
-- **P4 — Sovereign state.** It holds its own state and MUST NOT read
-  or write another patch's state directly. All influence arrives as
-  transmissions (docs/01, docs/03).
-- **P5 — Own log.** It keeps a log of its transmissions and decisions,
-  garbage-collected at a rate it declares in its envelope.
+- **P4 — Active log (sovereign readings).** It holds its own active
+  log: its current readings of every cell from its own perspective,
+  each reading dated — readings age, and acting on a reading MUST
+  account for its date. Its readings are first-class truth *for it*;
+  they are never another patch's to read, and it MUST NOT read or
+  write another patch's log or state directly. There is no shared
+  view to appeal to. All influence arrives as transmissions
+  (docs/01, docs/03).
+- **P5 — Active ledger.** Transmissions are ledger entries, not
+  private notes: each crossing MUST be booked by both sides — a SEND
+  by the sender, a RECEIVE by the receiver — under the contract
+  (algorithm) that governed the crossing, and only entries both sides
+  agree on count as shared. It keeps its ledger of transmissions and
+  decisions, garbage-collected at a rate it declares in its envelope.
+
+The two-items anatomy behind P4/P5 — and the shelf it draws on — is
+recorded in `FOUNDATIONS.md`, "Shelf foundations — the two active
+items."
 - **P6 — Haltable.** It can be stopped, and its station (docs/02)
   survives its absence; nothing downstream may require this specific
   instance, only the station's contract.
