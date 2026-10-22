@@ -303,29 +303,79 @@ is no universal stored state to appeal to — state lives in each item's
 active log (perspectival, dated); shared state is never stored
 anywhere, it exists only as agreed ledger entries.
 
-**The lineage (Lane D).**
+**The lineage, in layers (Lane D + Lane E + the deep-research
+lineage).** The flat October chain was the local record, not the whole
+history. Read the lineage as layers of maturity: a paradigm, its early
+expressions, components accreting around it, and finally the doctrine
+stated in the terms this programme now uses. Dates below date
+artifacts — local notes, repositories, commits — not the paradigm
+itself. The full records are
+[`LANE-D-LOCAL.md`](docs/foundations/LANE-D-LOCAL.md),
+[`LANE-E-DATES.md`](docs/foundations/LANE-E-DATES.md) and
+[`DEEP-RESEARCH-LINEAGE.md`](docs/foundations/DEEP-RESEARCH-LINEAGE.md).
 
-- **2026-10-05 — cordis-lab, the two spreadsheets:** active log = data
+- **Layer 0 — the paradigm (Casey's, pre-GitHub, years).** The
+  foundation — as a user paradigm and as a developer paradigm — predates
+  Casey's GitHub membership; in his words on 2026-10-21, this is how he
+  has thought AI should go for years. **This layer is recorded as his
+  statement, not as a publicly dated artifact.** The deep-research lane
+  verified the public record from the account's creation
+  (2024-12-29) forward; it cannot date what came before GitHub, and the
+  one predecessor pointer it found (`ctothed/SuperInstance`, referenced
+  inside SuperInstanceEco's README) is **UNVERIFIED** — that account
+  returns 404, so no dates or contents could be checked. The early
+  projects below were, in Casey's own assessment, immature expressions
+  of this paradigm — expressions of it, not its origin.
+- **Layer 1 — early expressions, 2025.** The **ActiveLog product
+  line**: `activelog-claude` (created 2025-08-19), `activelog`
+  (2025-08-23) and `SuperInstanceEco` (created 2025-08-31, root content
+  dated 2025-10-22), whose README is the “SuperInstance - ActiveLog
+  Technical Repository” — event-driven logging applications
+  (voice-note, Deckboss and business loggers), AWS microservices, and
+  **CQRS / event sourcing** as named architecture. The instinct is
+  legible here — the log as a first-class record — but the content is
+  conventional activity/event logging, **not** the paired doctrine; the
+  flagship-named `ActiveLog-MVP` and `ActiveLog-TechnicalRepo`
+  (2026-01-10) are empty placeholders, and the real content lives in
+  SuperInstanceEco. Alongside: **SmartCRDT** (2025-12-22), the earliest
+  dated distributed-state work in the public record — convergent state,
+  adjacent to the paradigm, in different vocabulary.
+- **Layer 2 — components accreting, 2026.** The pieces gather, still
+  un-unified. **Cells and spreadsheet form:** `SuperInstance-papers`
+  (2026-03-10) deconstructs logic into spreadsheet tiles and cells; the
+  profile repo (2026-04-11) states the concept — “The spreadsheet that
+  thinks.” **Ledger precursors:** `lau-conservation-engine`
+  (2026-05-31, double-entry energy ledger with transfer verification),
+  `simulation-ledger` (2026-06-07, append-only simulation ledger with
+  replay), `saddle` (2026-08-23, double-entry ledger per cell).
+  **Quilt and perspective:** `quilt` and `elephant` both land
+  2026-08-17 — the grid as a runtime of live, addressable cells, and
+  the perspectival line already in elephant's description: “every
+  reading is someone's reading.” **Travel shape:** `edge-ledger`
+  (2026-09-30) — per-node hash-chained envelopes, idempotent ingest,
+  loud fork rejection, pure projections.
+- **Layer 3 — the doctrine stated, October 2026.** **2026-10-05,
+  local notes (cordis-lab, the two spreadsheets):** active log = data
   sitting in cells (state at rest); active ledger = how data changed
   moving to the next cell — transitions, algorithms, agreements,
-  custody, always double-entered ("deducted here, added there"), the
-  algorithm part of the entry.
-- **2026-10-08 — quilt-rooms, the working implementation:** each room
-  keeps a sovereign active log; between rooms, an active ledger of
-  agreed links; cross-room time is itself an agreement, not a clock.
-  The same day: a log is the uncertain working state inside one agent's
-  cell; committing resolves it into shared agreement.
-- **2026-10-10 — the cellular agent:** "an agent is really these two
-  logs" — the active log is what the agent *is* (state-at-a-time); the
-  active ledger is its contracts, the agreed algorithms for sending
-  and receiving. "In human terms, a contract is an algorithm."
-- **2026-10-21 — the generalization:** agents and rooms become
-  **items** (deliberately generic — not necessarily objects); the log
-  becomes perspectival, dated **readings**; the ledger's emphasis
-  returns to **movements** (deductions/contributions, SEND/RECEIVE
-  agreement). Nothing earlier was retracted — scope widened, the log
-  went temporal, the two halves of the ledger (contracts ex ante,
-  movements ex post) compose.
+  custody, always double-entered (“deducted here, added there”), the
+  algorithm part of the entry. **2026-10-08, quilt-rooms — the first
+  public pairing, and a working implementation:** each room keeps a
+  sovereign active log; between rooms, an active ledger of agreed
+  links; cross-room time is itself an agreement, not a clock; the same
+  day's notes add that committing resolves uncertain log-state into
+  shared agreement. **2026-10-10, the cellular agent:** “an agent is
+  really these two logs” — the active log is what the agent *is*
+  (state-at-a-time); the active ledger is its contracts, the agreed
+  algorithms for sending and receiving. “In human terms, a contract is
+  an algorithm.” **2026-10-12, the hinge:** record primary, state
+  derived — state as a fold over records. **2026-10-21, the
+  generalization:** agents and rooms become **items** (deliberately
+  generic — not necessarily objects); the log becomes perspectival,
+  dated **readings**; the ledger's emphasis returns to **movements**
+  (deductions/contributions, SEND/RECEIVE agreement). Nothing earlier
+  was retracted — scope widened, the log went temporal, the two halves
+  of the ledger (contracts ex ante, movements ex post) compose.
 
 **What to tap (Lane C).** The shelf already settles the components
 around the core; cite and reuse the mechanisms — **import nothing
