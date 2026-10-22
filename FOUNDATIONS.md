@@ -244,6 +244,23 @@ No occurrence of any checked term. Nothing to correct.
   alignment of prose, not redesign — the architecture doc already says
   the correct thing about all six mathematical mechanisms.
 
+## Ruling recorded 2026-10-21 — deadband
+
+Casey rejected both framings previously offered for the deadband —
+clarify-only, and clarify plus abstain as a fourth outcome. The ruling
+is the autopilot mechanism: a deadband is a **(band, yaw-time)** pair
+around the receiver's predicted/expected course. Inside the band, the
+receiver holds and makes no adjustment; outside the band but within
+the yaw-time, it holds and watches; only an excursion that persists
+beyond the yaw-time triggers action. The band and yaw-time are
+context-set, learnable parameters, with conformal calibration as the
+named method for setting band edges from data.
+
+This replaces the older wording wherever it appears. **Abstain is not
+a fourth outcome** — coasting is inside-band behaviour. Likewise,
+clarify/narrow is not the meaning of the deadband; it is one possible
+response after an Act trigger, alongside accept-best and escalate.
+
 ## Standing rule
 
 **Foundations before architecture completion.** No chapter, spec clause,

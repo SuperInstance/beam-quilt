@@ -1,8 +1,9 @@
 # SPEC — the patch contract and the seam handshake
 
-v0, 2026-10-21. Normative where it says MUST; the chapters in `docs/`
+v1.1, 2026-10-21. Normative where it says MUST; the chapters in `docs/`
 are the reasoning, this file is the checklist an implementation can be
-tested against.
+tested against. The deadband definition in §3 was revised in v1.1 by
+Casey's ruling recorded below; the other clauses carry forward from v0.
 
 ## 1. Patch
 
@@ -53,12 +54,54 @@ For a transmission from patch A to patch B:
    crosses; in particular no state references cross (P4).
 3. **Pick (receiver Jev).** B's receiver judge re-measures the payload
    with its own questions and decides **comparatively** — against the
-   pool of candidates competing for B's attention in this round:
-   - above the go band → accept;
-   - in the **deadband** → hold, ask a further typed question, or
-     escalate to a larger model scoped to exactly this boundary;
-   - below the no-go band → refuse, with the refusal logged and its
-     profile returned to A.
+   pool of candidates competing for B's attention in this round. The
+   comparative result is assessed against B's predicted/expected course
+   of action through the deadband below. The deadband determines
+   whether B adjusts its course; it does not itself choose the
+   adjustment.
+
+   **Deadband (v1.1). Ruling: Casey, 2026-10-21 (autopilot doctrine).**
+   A deadband is a pair of receiver parameters, **(band, yaw-time)**,
+   around B's predicted/expected course of action:
+
+   - **Band** — the maximum tolerated deviation from that predicted
+     course, expressed in the receiver's declared deviation units for
+     the context. It is situation-specific: narrow where the safety
+     margin is narrow, wider where deviation is cheap. In a constrained
+     context, the band MUST remain inside the applicable safety
+     corridor.
+   - **Yaw-time** — the maximum time an excursion outside the band may
+     persist before B acts. The excursion timer starts when the
+     deviation crosses outside the band and resets if it returns inside
+     before the yaw-time expires. A short yaw-time fits contexts where
+     holding the band must be active; a longer yaw-time fits noisy
+     contexts where excursions commonly swing back on their own.
+
+   The outcomes are:
+
+   - **Hold** — deviation is inside the band: make no adjustment. This
+     is where coasting belongs; it is behaviour inside the band, not a
+     separate outcome.
+   - **Hold-watch** — deviation is outside the band but has persisted
+     for less than the yaw-time: make no adjustment yet, keep the
+     predicted course, and observe the excursion.
+   - **Act** — deviation has remained outside the band for at least the
+     yaw-time: invoke B's response policy. The policy, not the band,
+     chooses the response. Responses include **accept-best** (adjust to
+     the best candidate in the pool), **clarify/narrow** (ask a further
+     typed question), and **escalate** (call a larger model scoped to
+     exactly this boundary); refusal remains available under that
+     policy where no candidate is admissible, with the refusal logged
+     and its profile returned to A.
+
+   Band and yaw-time are context-set parameters, not universal
+   constants. Learning how to set them for a situation — and learning
+   the outside-band response — is a machine-learning problem.
+   **Conformal calibration is the named method for setting band edges
+   from the receiver's calibration data.** The parameter values,
+   context, excursion start and duration, and resulting outcome MUST
+   be available to the seam log; when the parameter-setting decisions
+   become formula-shaped, G2 graduation applies.
 4. **Disagreement record.** If sender profile and receiver measurement
    diverge beyond a declared tolerance, the divergence is logged as a
    first-class event at the seam (docs/04). It is never averaged away
