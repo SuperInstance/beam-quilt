@@ -295,7 +295,17 @@ ledger of account values but of **deductions and contributions**:
 payloads out of one item and into another, recorded by the sender as a
 SEND and by the receiver as a RECEIVE — and the *agreement* between
 the two sovereign records is what mints the shared fiction that is
-operational. A **contract is an algorithm**: the agreed algorithm
+operational. The first-class citizen is the **observer's own state**,
+not the thing observed: a reading of another cell is an abstraction
+*of the reader's state*, produced by the reader's log — there is no
+reading independent of a reader. Two views come into contact only
+through ledger agreements; the rest stays hidden, and it is hidden
+*structurally*, not cryptographically — there is no God's-eye record
+anywhere that could be decrypted, because none is ever made. (Casey's
+game form of the same point, 2026-10-21: the streaming ins and outs
+between players as they confirm the logic between them — agreements
+determine exactly where everything is, while each side's view remains
+its own.) A **contract is an algorithm**: the agreed algorithm
 governing a crossing is itself an early ledger entry, an agreement
 about future sends and receives; and committing is the bridge that
 resolves uncertain log-state into ledger agreement. Consequence: there
@@ -360,10 +370,31 @@ itself. The full records are
   dated distributed-state work in the public record — convergent state,
   adjacent to the paradigm, in different vocabulary.
 - **Layer 2 — components accreting, 2026.** The pieces gather, still
-  un-unified. **Cells and spreadsheet form:** `SuperInstance-papers`
-  (2026-03-10) deconstructs logic into spreadsheet tiles and cells; the
-  profile repo (2026-04-11) states the concept — “The spreadsheet that
-  thinks.” **Ledger precursors:** `lau-conservation-engine`
+  un-unified. **Cells and spreadsheet form:** SmartCRDT (Layer 1) was
+  the springboard to **`polln`** (2026-03-06) — “SuperInstance
+  Visualized in Spreadsheets for Tile Intelligence” — which turned the
+  thinking into the spreadsheet form, alongside the realisation that
+  the main back end the paradigm needed did not yet exist.
+  `SuperInstance-papers` (2026-03-10) — the repo where Casey's AIs wrote
+  formal papers on each issue as it was discussed (conservation of
+  intelligence, semantic distance, and more) — deconstructs logic into
+  spreadsheet tiles and cells; `Polln-whitepapers` and `Spreadsheet-ai`
+  land the same day. **`spreadsheet-moment-proto`** (2026-03-14) carries
+  the thesis Casey named for it: AI's ChatGPT moment was a *shell* — one
+  AI in a terminal; the spreadsheet moment puts many AI shells in a
+  grid where they address each other **by spreadsheet location** rather
+  than by any addressing system of their own, working agentically in
+  the background, so a human (or an agent) can think about the *logic*
+  of an agentic system agnostic of its coding and porting — coding-agent
+  systems form an optimisation layer *behind* the spreadsheet, and the
+  spreadsheet itself is a **middle layer** that can front anything: a
+  UI, or every sensor on a boat ported to an LED screen mocked up as
+  gauges. (The thread Casey discussed with a Devin co-founder; the
+  current “spreadsheet moment” project is another builder's, which
+  sidetracked him — the proto here is his.) The thread matures in
+  `quilt-spreadsheet` (2026-09-23): cells as programs, double-entry
+  bookkeeping, backend porting, distributed clocks. The profile repo
+  (2026-04-11) states the concept — “The spreadsheet that thinks.” **Ledger precursors:** `lau-conservation-engine`
   (2026-05-31, double-entry energy ledger with transfer verification),
   `simulation-ledger` (2026-06-07, append-only simulation ledger with
   replay), `saddle` (2026-08-23, double-entry ledger per cell).
