@@ -335,6 +335,16 @@ itself. The full records are
   fragments survived that loss, particularly from his 2025 work. Read
   gaps, stubs and late creation dates accordingly: absence in this
   record is not evidence of absence in the work.
+  **Naming (Casey, 2026-10-21):** for a long time the whole system was
+  called **Active Log** — the name predates "SuperInstance" entirely.
+  ActiveLog was to be the back end, and the cluster of log-ending
+  domains he purchased were to be its various front ends. The step-back
+  realisation was that a **super instance** is what the thing is no
+  matter what shape you give it — the shape-independent concept above
+  any back end or front end — and the name stuck (SI, echoing the
+  super intelligence idea he was drawn to at the time). This is why
+  "ActiveLog" names a 2025 product line: it was the system's own first
+  name, later demoted to one component's.
 - **Layer 1 — early expressions, 2025.** The **ActiveLog product
   line**: `activelog-claude` (created 2025-08-19), `activelog`
   (2025-08-23) and `SuperInstanceEco` (created 2025-08-31, root content
