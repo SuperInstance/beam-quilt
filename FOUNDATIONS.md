@@ -181,6 +181,8 @@ was grepped the same way and fixed in place.
 
 - `docs/04-jev-pairs.md` — the "~7 ms on ARM" figure is now scoped to
   short typed profiles, with a pointer here.
+  *(Superseded 2026-10-22: the figure was retired outright in both
+  files after the F4 audit — see the corrected judge row above.)*
 - `README.md` — the same scoping applied to the jev-semantic line.
 - `PROGRAM-MAP.md` — "roughly five thousand repos" replaced with the
   verified count: 5,306 public repositories, 4,485 non-fork.
