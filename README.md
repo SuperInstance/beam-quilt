@@ -71,8 +71,9 @@ scope.
 This repo is the *synthesis*. The components live elsewhere and predate it:
 
 - **jev-semantic** — the working Jev: judgment log, question tree, a small
-  student judge (6.8M parameters, ~7 ms on ARM for short typed profiles —
-  see FOUNDATIONS.md on the scope of that figure).
+  student judge (6.8M parameters; measured 12.3 ms p50 at 4 threads on a
+  Jetson for short typed profiles — see FOUNDATIONS.md and jev-semantic's
+  BENCHMARK.md for the corrected record on that figure).
 - **quilt-cells** — the cell specification: input → cell → output + why + cost.
 - **patchwork-experts** — the patch envelope format: a small, fixed
   markdown/JSON surface with powerful payloads underneath.

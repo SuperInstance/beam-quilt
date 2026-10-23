@@ -2,9 +2,10 @@
 
 A **Jev** is a small, cheap judgment model: it takes a question and returns
 a *typed* answer — a percentage, a yes/no, a classification — fast (the
-workshop's student judge: 6.8M parameters, ~7 ms on ARM — a figure scoped
-to short typed profiles; arbitrary-length prose input is not read in 7 ms,
-see FOUNDATIONS.md §5). This chapter is
+workshop's student judge: 6.8M parameters, measured 12.3 ms p50 at
+4 threads on a Jetson for short typed profiles; the input window is
+64 tokens, so arbitrary-length prose is out of scope by construction —
+see FOUNDATIONS.md §5 and jev-semantic's BENCHMARK.md). This chapter is
 about what happens when you put a Jev on **both sides of every seam**, and
 why that pairing, more than any single model in the system, is where the
 intelligence of a quilt actually resides.
